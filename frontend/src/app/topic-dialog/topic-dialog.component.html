@@ -1,0 +1,57 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <h3>
+      Add Topic
+    </h3>
+    <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 col-12">
+        <table>
+          <tr>
+            <td>
+              Topic Id
+            </td>
+            <td>
+              <mat-form-field class="example-form-field">
+                <input min="1" matInput type="number" placeholder="Topic ID" [(ngModel)]="topicId" />
+                <button mat-button *ngIf="topicId" matSuffix mat-icon-button aria-label="Clear" (click)="topicId=''">
+                  <mat-icon>close</mat-icon>
+                </button>
+              </mat-form-field>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              Topic Name </td>
+            <td>
+              <mat-form-field class="example-form-field">
+                <input matInput type="text" placeholder="Topic Name" [(ngModel)]="topicName" />
+                <button mat-button *ngIf="topicName" matSuffix mat-icon-button aria-label="Clear" (click)="topicName=''">
+                  <mat-icon>close</mat-icon>
+                </button>
+              </mat-form-field>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              Topic Image
+            </td>
+            <td>
+              <mat-form-field class="example-form-field">
+                <input matInput type="text" placeholder="Topic Image" [(ngModel)]="topicImage" />
+                <button mat-button *ngIf="topicImage" matSuffix mat-icon-button aria-label="Clear" (click)="topicImage=''">
+                  <mat-icon>close</mat-icon>
+                </button>
+              </mat-form-field>
+            </td>
+          </tr>
+          <tr>
+            <td>
+
+            </td>
+            <td>
+              <button mat-raised-button type="submit" color="accent" (click)="onSubmit()" (click)="goBack()">Add</button>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+</div>

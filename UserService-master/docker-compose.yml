@@ -1,0 +1,21 @@
+version: '2.0'
+
+services:
+ user-profile:
+  container_name: user-profile
+  build: .
+  restart: always
+  ports:
+   - 8080:8080 
+  depends_on:
+   - mongo
+  
+ mongo:
+  container_name: mongo-container
+  image: mongo:latest
+  ports:
+   - "27000:27017"
+  volumes:
+   - /var/lib/mongodb:/var/lib/mongodb
+  restart: always
+  command: mongod

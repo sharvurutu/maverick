@@ -1,0 +1,26 @@
+version: '3'
+services: 
+  springboot:
+    build: .
+    image: gamerecommendation
+    restart: always
+    container_name: recommendation
+    ports:
+      - 8084:8084
+    depends_on:
+      - neo4j
+    network_mode: "host"
+    hostname: localhost
+
+  neo4j:
+    image: neo4j:latest
+    ports:
+      - 7475:7474
+      - 6478:6477
+      - 7688:7687
+    environment:
+      - NEO4J_AUTH=none
+    volumes:
+      - $HOME/var/lib/neo4j/data:/data
+    network_mode: "host"
+    hostname: localhost

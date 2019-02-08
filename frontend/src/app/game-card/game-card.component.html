@@ -1,0 +1,51 @@
+<!-- <div class="container">
+  <div class="row">
+    <div class="col-lg-3 col-md-3 col-sm-4 col-xs-4 col-6 aa" *ngFor="let card of cards">
+      <mat-card>
+        <mat-card-title>
+          <span class="gameName">{{ card.name }}</span>
+        </mat-card-title>
+        <img src="{{card.gameImage}}" alt="{{card.name}}" style="width:100%">
+        <p class="ques">          {{card.recommendation}}
+        </p>
+        <button class="play" mat-icon-button>
+          <mat-icon color="primary" (click)="routeToQuiz(card.game_id,card.game_type,card.game_type_id,card.topic_id)" aria-label="Example icon-button with a heart icon">play_circle_outline</mat-icon>
+        </button>
+      </mat-card>
+    </div>
+  </div>
+</div> -->
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-3 col-md-3 col-sm-4 col-xs-4 col-6 aa" *ngFor="let card of cards">
+      <mat-card class="example-card">
+        <mat-card-header>
+          <mat-card-title>
+            <span class="gameName">{{ card.name }}</span>
+            <p style="font-size: 10px;  color: red;">{{ card.game_type}}</p>
+          </mat-card-title>
+        </mat-card-header>
+        <img src="{{card.gameImage}}" alt="{{card.name}}" style="width:100%">
+        <p class="ques"> {{card.recommendation}}
+        </p>
+        <mat-card-actions>
+          <button class="play" mat-icon-button>
+            <mat-icon color="primary" (click)="routeToQuiz(card.game_id,card.game_type,card.game_type_id,card.topic_id,card.category_id,card.name)" aria-label="Example icon-button with a heart icon">play_circle_outline</mat-icon>
+          </button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>
+</div>

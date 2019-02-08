@@ -1,0 +1,32 @@
+<h1 class="margin">List of Topics</h1>
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-3 col-md-3 col-sm-4 col-xs-4 col-6 aa" *ngFor="let question of questionGen">
+            <a routerLink="/topic-details" [queryParams]=" {topicName: question.topicName,categoryId:categoryId}">
+                <mat-card class="example-card">
+                    <mat-card-header>
+                        <mat-card-title>{{ question.topicName | uppercase }} </mat-card-title>
+                    </mat-card-header>
+                    <img mat-card-image src="{{ question.topicImage }}" alt="Photo of a {{ question.topicName }}">
+                    <a routerLink="/showgame" [queryParams]=" {topicName: question.topicName,categoryId:categoryId}">
+                        <i style="margin-bottom:4px; " class="material-icons" matTooltip="Create Game">create</i>
+                    </a>
+                </mat-card>
+            </a>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <button mat-raised-button color="accent" (click)="goBack()">Back</button>
+</div>
+<div style="margin-right:40px; margin-bottom: 100px;" class="row">
+    <div class="col-md-12">
+    <a routerLink="/add-topic" [queryParams]=" {categoryId:categoryId}">
+        <button style="float: right" mat-fab color="primary">
+            <span style="font-size: 30px">+</span>
+        </button>
+    </a>
+</div>
+</div>

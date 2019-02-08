@@ -1,0 +1,36 @@
+# spring:     
+#  data:
+#    mongodb:
+#      database: questiondb
+#      host: localhost
+#      uri: mongodb://172.23.238.165:27017/questiondb
+#      port: 27017
+      
+      
+
+#management:
+#  endpoint:
+#    prometheus:
+#       enabled: true
+
+
+#kafka:
+# bootstrap-servers: 172.23.238.156:9092
+# topic:
+#   QuestionGen: QuestionGen.t     
+   
+   
+# configure eureka client
+#eureka:
+ # instance:
+ #   leaseRenewalIntervalInSeconds: 1
+  #  leaseExpirationDurationInSeconds: 3
+  #client:
+  #  serviceUrl:
+  #    defaultZone: http://172.23.238.173:8090/eureka/
+      
+   
+   
+   
+#mongodb://mongo-container:27000/questiondb
+

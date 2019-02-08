@@ -1,0 +1,140 @@
+<!--************************************* Updating user profile form ************************************* -->
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-lg-8 col-md-12 col-sm-12 col-xs-12 col-12">
+      <mat-card class="card2" id="card2">
+        <font>
+          <mat-card-subtitle>
+            <h3 style="letter-spacing: 4px">Update User Form </h3>
+          </mat-card-subtitle>
+          <!-- The *ngFor in the <li> element is the Angular "repeater" directive. 
+      It marks that <li> element (and its children) as the "repeater template": -->
+          <table *ngFor="let u of user">
+            <td>
+              <!--************ [(ngModel)] binds database data to show before updation on Form **************** -->
+              <input type="hidden" [(ngModel)]="u.userId" placeholder="userId" />
+            </td>
+            <tr>
+              <td>
+                <b>
+                  <td>
+                    <i style="color:#ee1eb3fd" class="fa fa-user fa" aria-hidden="true"></i>
+                  </td>
+                  <td> User Name</td>
+                </b>
+              </td>
+              <td>
+                <input type="text" [(ngModel)]="u.userName" placeholder="People will see you" />
+              </td>
+            </tr>
+            <input type="hidden" [(ngModel)]="u.password" />
+            <tr>
+              <td>
+                <b>
+                  <td>
+                    <i style="color:#d32248;" class="fa fa-envelope fa" aria-hidden="true"></i>
+                  </td>
+                  <td>E- Mail</td>
+                </b>
+              </td>
+              <td>
+                <input type="text" [(ngModel)]="u.email" placeholder="Keep you up-to-date" />
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <b>
+                  <td>
+                    <i style="color:#5f6d65;" class="fa fa-grav fa" aria-hidden="true"></i>
+                  </td>
+                  <td> Age</td>
+                </b>
+              </td>
+              <td>
+                <!--******* onfocus(HTML property) to change look of form inpput as user clicks****** -->
+                <input type="text" [(ngModel)]="u.age" placeholder="date" onfocus="(this.type='date')">
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <b>
+                  <td>
+                    <i style="color:#00f2bd" class="fa fa-picture-o" aria-hidden="true"></i>
+                  </td>
+                  <td>Profile picture</td>
+                </b>
+              </td>
+              <td>
+                <input type="text" [(ngModel)]="u.image" placeholder="Lets make it look better" />
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <b>
+                  <td>
+                    <i style="color:#f8fc19" class="fa fa-picture-o" aria-hidden="true"></i>
+                  </td>
+                  <td> Cover image</td>
+                </b>
+              </td>
+              <td>
+                <input type="text" [(ngModel)]="u.coverImage" placeholder="60% look of your profile" />
+              </td>
+            </tr>
+            <input type="hidden" [(ngModel)]="u.gender" />
+            <tr>
+              <td>
+                <b>
+                  <td>
+                    <i style="color:#bf22c7" class="fa fa-map-marker" aria-hidden="true"></i>
+                  </td>
+                  <td> Location</td>
+                </b>
+              </td>
+              <td>
+                <input type="text" [(ngModel)]="u.location" placeholder="find who's playing nearby" />
+              </td>
+            </tr>
+            <input type="hidden" [(ngModel)]="u.level" />
+            <input type="hidden" [(ngModel)]="u.levelName" />
+            <tr>
+              <td>
+                <b>
+                  <td>
+                    <i style="color:#0de4cf" class="fa fa-life-ring" aria-hidden="true"></i>
+                  </td>
+                  <td> About Me</td>
+                </b>
+              </td>
+              <td>
+                <input type="text" [(ngModel)]="u.aboutMe" />
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <b>
+                  <td>
+                    <i style="color:#1bf80f" class="fa fa-circle" aria-hidden="true"></i>
+                  </td>
+                  <td> Status</td>
+                </b>
+              </td>
+              <td>
+                <input type="text" [(ngModel)]="u.status" />
+              </td>
+            </tr>
+            <input type="hidden" [(ngModel)]="u.gameCount" />
+            <tr class="justify-content-center">
+              <!-- <button style="margin-left: 120%" type="submit" class="btn btn-success" (click)="updateUser(u)" (click)="goBack()">Update</button> -->
+              <button style="margin-left: 83%" type="submit" class="btn btn-default btn-sm tip btn-responsive" (click)="updateUser(u)" (click)="showSnackBar()" (click)="goBack()">
+                <span class="glyphicon glyphicon-share-alt glyphicon glyphicon-white"></span>
+                Update
+                <i class="fa fa-check" aria-hidden="true"></i>
+              </button>
+            </tr>
+          </table>
+        </font>
+      </mat-card>
+    </div>
+  </div>
+</div>

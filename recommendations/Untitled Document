@@ -1,0 +1,16 @@
+-------------Recommendation Engine----------
+
+Good Afternoon everyone !! myself Khushboo. My service name is Recommendation Engine Service. 
+For ultimate user Experience, the Recommendation Engine of the system comes with capabilities to provide accurate recomendations to users. Users are provided a game feed on their landing page with recommendations, such as the last game she played, trending games, and games under the categories of her interest.
+For providing the such experience, the recommendation engine uses the graph database having nodes and relationship i.e Neo4j.
+The more user will play the more accurate recommendation will be. 
+The recommendation Service database is connected to user manager service, game manager service, question generator service and game engine service through kafka and as an user is registered a node of user is created in database with user's favourite category details, same is applicable for question generator, when it produces a new category , the new node of category is created in database , when a new game is created by game manager service, a new node of game is created with relation with category in which that game and when an user play a game the information from game engine is consume and user-played relationship is created in database. In this way the data is gather in recommendation service to recommend and give user more accurate data based on user played game, games played by most of users, games in his/her favourite category. 
+
+-------------Adaptive Game----------
+
+Good Afternoon everyone !! myself Khushboo. My service name is Adaptive Game Engine Service. 
+This game is fully adaptive and is intelligent enough to provide questions based on the user's knowledge on a topic. The game intelligently ensures that users keep on returning to the game by providing questions that efficiently challenges the user. The game automatically keeps gathering more intelligence as users keeps on playing the game. The intelligence of this game is supported by a backend graph.
+For the graph the engine uses Neo4j.
+The adaptive graph gather the data of whole question by hitting the rest url expose by game manager to load all questions which will be updated time to time. The graph is modelled in such a way that the more the users play the engine will become more intelligent by gathering data. 
+The engine uses the websocket to connect to the client UI. The assessment is the main part of adaptive algorithm. The algorithm is the key for the adaptiveness of the engine. 
+The whole Adaptive Game Engine is of two parts - Adaptive Analyzer which is using the neo4j database and the Adaptive engine which is using the algorithm.

@@ -1,0 +1,23 @@
+version: '3.1'
+
+services:
+  game-reporting:
+    build: .
+    restart: always
+    container_name: spring-mongo-game-reporting-container
+    ports:
+      - 8081:8080
+#    working_dir: /opt/app
+    depends_on:
+      - mongo
+  
+  mongo:
+    image: mongo
+    container_name: mongo-container
+    ports:  # for demo/debug purpose only
+      - 27000:27017
+#    volumes:
+#      - $HOME/data/springboot-mongo-data:/data/db
+#      - $HOME/data/springboot-mongo-bkp:/data/bkp
+    restart: always
+

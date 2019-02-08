@@ -1,0 +1,32 @@
+<!-- <h1 class="margin">List of Games</h1> -->
+<div class="container">
+    <div class="row">
+        <div class="col-lg-3 col-md-3 col-sm-4 col-xs-4 col-6 aa" *ngFor="let g of game">
+            <a routerLink="/game-details" [queryParams]=" {topicName: g.topicName,categoryId:categoryId}">
+                <mat-card class="example-card">
+                    <mat-card-header>
+                        <mat-card-title>{{ g.gameName | uppercase }} </mat-card-title>
+                    </mat-card-header>
+                    <img mat-card-image src="{{ g.gameImage }}" alt="Photo of a {{ g.gameName }}">
+                    <a routerLink="/showgame" [queryParams]=" {topicName: g.topicName,categoryId:categoryId}">
+                        <i style="margin-bottom:4px; " class="material-icons" matTooltip="Show Games">Show_games</i>
+                    </a>
+                    <!-- <button mat-raised-button color="primary"  (click)="save(g)" (click)="goBack()" >Edit</button>  -->
+                    <button mat-raised-button color="accent" (click)="delete(g.gameId)">Delete</button>
+                </mat-card>
+            </a>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <button mat-raised-button color="accent" (click)="goBack()">Back</button>
+</div>
+<div style="margin-right:40px; margin-bottom: 100px;" class="row">
+    <div class="col-md-12">
+        <a routerLink="/create-game" [queryParams]=" {topicName:game.topicName, yId:categoryId}">
+            <button style="float: right" mat-fab color="primary">
+                <span style="font-size: 30px">+</span>
+            </button>
+        </a>
+    </div>
+</div>

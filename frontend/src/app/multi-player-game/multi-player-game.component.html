@@ -1,0 +1,137 @@
+<h5 style="text-align: center; color:darkgreen">
+  Multi Player FFF Quiz !</h5>
+<hr>
+<div id="main-content" class="container">
+  <div class="row" style="background-color: #9db69f">
+    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 col-12">
+      <br>
+      <form class="form-inline">
+        <div class="form-group">
+          <button style="display: none" id="connect" class="btn btn-default" type="button" [disabled]="disabled" (click)="connect()">Connect</button>
+          <button id="disconnect" class="btn-floating btn-small waves-effect waves-light red z-depth-5 ff" (click)="disconnect()">
+            <i class="material-icons">close</i>
+          </button>
+          <div *ngIf="countDown != 0">
+            <h5 style="float:left; color:white">
+              <i>Remaining Time : {{timeElapsed()}}</i>
+            </h5>
+          </div>
+        </div>
+        <div class="row" style="background-color: khaki" *ngIf="!isOn">
+          <div class="col m12">
+            <div class="card">
+              <div class="card-content">
+                <strong>
+                  <i>Game Description :</i>
+                </strong>
+                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's
+                  standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it
+                  to make a type specimen book.</p>
+                <strong>
+                  <i>Game Rules :</i>
+                </strong>
+                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's
+                  standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it
+                  to make a type specimen book.</p>
+                <br>
+                <button id="send" class="waves-effect waves-light btn" type="button" (click)="isOn= true" (click)="sendResponse()">continue</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div *ngIf="isOn">
+          <div class="col m12">
+            <div class="card option">
+              <div class="card-content">
+                <strong>Question : {{qNumber}}</strong>
+                <strong>{{questionStamp}} </strong>
+              </div>
+            </div>
+          </div>
+          <div class="col m12">
+            <div class="card option">
+              <a (click)='sendAnswerToAll(op1)'>
+                <div class="card-action">
+                  <strong>1) : {{op1}}</strong>
+                </div>
+              </a>
+            </div>
+          </div>
+          <div class="col m12">
+            <div class="card option">
+              <a (click)='sendAnswerToAll(op2)'>
+                <div class="card-action">
+                  <strong>2) : {{op2}}</strong>
+                </div>
+              </a>
+            </div>
+          </div>
+          <div class="col m12">
+            <div class="card option">
+              <a (click)='sendAnswerToAll(op3)'>
+                <div class="card-action">
+                  <strong>3) : {{op3}}</strong>
+                </div>
+              </a>
+            </div>
+          </div>
+          <div class="col m12">
+            <div class="card option">
+              <a (click)='sendAnswerToAll(op4)'>
+                <div class="card-action">
+                  <strong>4) : {{op4}}</strong>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+    <!-- <h5 style="text-align: center; color:white">
+      <i>Players Info</i>
+    </h5> -->
+    <div class="com-lg-1 col-md-1"></div>
+    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 col-12">
+      <div>
+        <h5 style="text-align: center; color:white">
+          <i>Players Info</i>
+        </h5>
+      </div>
+      <hr>
+      <div class="row">
+        <div class="col m12">
+          <div class="card card1">
+            <div class="card-content">
+              <div class="col s4 l4">
+                <img src="https://qualiscare.com/wp-content/uploads/2017/08/default-user.png" alt="user -sample- image" class="circle responsive-img">
+              </div>
+              <div>
+                <h6>Player Name :
+                  <b>Ajay</b>
+                </h6>
+                <h6>User ID : {{user1}}</h6>
+                <h6>Score :{{score[0]}} </h6>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col m12">
+          <div class="card card1">
+            <div class="card-content">
+              <div class="col s4 l4">
+                <img src="https://qualiscare.com/wp-content/uploads/2017/08/default-user.png" alt="user - sample - image" class="circle responsive-img">
+              </div>
+              <div>
+                <h6>Player Name </h6>
+                <h6>Player ID : {{user2}}</h6>
+                <h6>Score : {{score[2]}} </h6>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

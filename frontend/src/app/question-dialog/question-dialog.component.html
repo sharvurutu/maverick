@@ -1,0 +1,134 @@
+<h3>
+  Post new question</h3>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-6 col-md-6 col-sm-3 col-xs-4 col-6">
+      <div class="justify-content-center">
+        <table>
+          <tr>
+            <td>
+              Question Id
+            </td>
+            <td>
+              <mat-form-field class="example-form-field">
+                <input matInput type="number" min="1" placeholder="Question ID" [(ngModel)]="questionId" />
+                <button mat-button *ngIf="questionId" matSuffix mat-icon-button aria-label="Clear" (click)="questionId=''">
+                  <mat-icon>close</mat-icon>
+                </button>
+              </mat-form-field>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              Question
+            </td>
+            <td>
+              <mat-form-field class="example-form-field">
+                <input matInput type="text" placeholder="Question" [(ngModel)]="questionStem" />
+                <button mat-button *ngIf="questionStem" matSuffix mat-icon-button aria-label="Clear" (click)="questionStem=''">
+                  <mat-icon>close</mat-icon>
+                </button>
+              </mat-form-field>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              Question Level
+            </td>
+            <td>
+              <mat-form-field class="example-form-field">
+                <input matInput type="text" placeholder="Question Level" [(ngModel)]="questionLevel" />
+                <button mat-button *ngIf="questionLevel" matSuffix mat-icon-button aria-label="Clear" (click)="questionLevel=''">
+                  <mat-icon>close</mat-icon>
+                </button>
+              </mat-form-field>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              Question Type
+            </td>
+            <td>
+              <mat-form-field class="example-form-field">
+                <input matInput type="text" placeholder="Question Type" [(ngModel)]="questionType" />
+                <button mat-button *ngIf="questionType" matSuffix mat-icon-button aria-label="Clear" (click)="questionType=''">
+                  <mat-icon>close</mat-icon>
+                </button>
+              </mat-form-field>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              Option 1
+            </td>
+            <td>
+              <mat-form-field class="example-form-field">
+                <input matInput type="text" placeholder="Option1" [(ngModel)]="option1" />
+                <button mat-button *ngIf="option1" matSuffix mat-icon-button aria-label="Clear" (click)="option1=''">
+                  <mat-icon>close</mat-icon>
+                </button>
+              </mat-form-field>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              Option 2
+            </td>
+            <td>
+              <mat-form-field class="example-form-field">
+                <input matInput type="text" placeholder="Option2" [(ngModel)]="option2" />
+                <button mat-button *ngIf="option2" matSuffix mat-icon-button aria-label="Clear" (click)="option2=''">
+                  <mat-icon>close</mat-icon>
+                </button>
+              </mat-form-field>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              Option 3
+            </td>
+            <td>
+              <mat-form-field class="example-form-field">
+                <input matInput type="text" placeholder="Option3" [(ngModel)]="option3" />
+                <button mat-button *ngIf="option3" matSuffix mat-icon-button aria-label="Clear" (click)="option3=''">
+                  <mat-icon>close</mat-icon>
+                </button>
+              </mat-form-field>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              Option 4
+            </td>
+            <td>
+              <mat-form-field class="example-form-field">
+                <input matInput type="text" placeholder="Option4" [(ngModel)]="option4" />
+                <button mat-button *ngIf="option4" matSuffix mat-icon-button aria-label="Clear" (click)="option4=''">
+                  <mat-icon>close</mat-icon>
+                </button>
+              </mat-form-field>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              Correct Answer 
+            </td>
+            <td>
+              <mat-form-field class="example-form-field">
+                <input matInput type="text" placeholder="Correct Answer" [(ngModel)]="correctAnswer" />
+                <button mat-button *ngIf="correctAnswer" matSuffix mat-icon-button aria-label="Clear" (click)="correctAnswer=''">
+                  <mat-icon>close</mat-icon>
+                </button>
+              </mat-form-field>
+            </td>
+          </tr>
+        </table>
+        <button mat-raised-button color="accent" (click)="addQuestion()" (click)="goBack()">Add</button>
+        <br>
+        <br>
+        <br>
+        <br>
+      </div>
+    </div>
+  </div>
+</div>

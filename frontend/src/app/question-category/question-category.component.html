@@ -1,0 +1,14 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-3 col-md-3 col-sm-4 col-xs-4 col-6 aa" *ngFor="let category of categories">
+      <a routerLink="/category-details" [queryParams]="{categoryId:category.categoryId}">
+        <mat-card class="example-card">
+          <mat-card-header>
+            <mat-card-title>{{category.categoryName | uppercase }} </mat-card-title>
+          </mat-card-header>
+          <img mat-card-image src={{category.categoryImage}} alt="{{ category.categoryImage }}">
+        </mat-card>
+      </a>
+    </div>
+  </div>
+</div>

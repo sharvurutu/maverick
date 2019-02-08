@@ -1,0 +1,23 @@
+version: '3.1'
+
+services:
+  springboot:
+    build: .
+    restart: always
+    container_name: game-engine-container
+    ports:
+      - 8080:8080
+#    working_dir: /opt/app
+    depends_on:
+      - mongo
+  
+  mongo:
+    image: mongo:latest
+    container_name: mongo-container
+    ports:  
+      - 27017:27017
+    volumes:
+     - /var/lib/mongodb:/var/lib/mongodb
+     #- $HOME/data/springboot-mongo-bkp:/data/bkp
+    restart: always
+    command: mongod

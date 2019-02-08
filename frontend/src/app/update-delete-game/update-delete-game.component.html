@@ -1,0 +1,27 @@
+<mat-card class="example-card">
+  <div *ngFor=" let g of game" class="example-container">
+    <div class="alignment">
+      <label>
+        <span>Game Id: </span>{{ g.gameId}}
+      </label>
+      <br>
+      <br>
+      <div class="fields">
+        <table>
+          <tr>
+            <td>
+              <mat-form-field>
+                <input matInput placeholder="Game Name" required [(ngModel)]="gameName">
+              </mat-form-field>
+            </td>
+          </tr>
+          <br>
+          <!-- <div fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="5px"> -->
+          <button mat-raised-button color="primary" (click)="goBack()">Back</button>
+          <!-- <button mat-raised-button color="primary" (click)="save(g.gameId)" (click)="goBack()">Save</button> -->
+          <button mat-raised-button color="accent" (click)="delete(g)">Delete</button>
+        </table>
+      </div>
+    </div>
+  </div>
+</mat-card>

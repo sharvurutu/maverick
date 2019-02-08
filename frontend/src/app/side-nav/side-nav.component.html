@@ -1,0 +1,39 @@
+<section>
+  <nav class="navbar navbar-dark default-color justify-content-between">
+    <div>
+      <a class="navbar-brand" href="#" [routerLink]="['home/']">Maverick</a>
+    </div>
+    <form class="form-inline my-1">
+      <div class="md-form form-sm my-0">
+        <input class="form-control form-control-sm mr-sm-2 mb-0" type="text" placeholder="&emsp;&emsp;Look for a game" aria-label="Number"
+          matInput [formControl]="searchTerm" [matAutocomplete]="auto">
+        <mat-autocomplete #auto="matAutocomplete">
+          <mat-option *ngFor="let s of searchResult">
+            <a [routerLink]="['searchresult']" [queryParams]=" { gameName: s.gameName }">
+              <div style="background-color:red">{{ s.gameName }}</div>
+            </a>
+          </mat-option>
+        </mat-autocomplete>
+      </div>
+    </form>
+    <div class="logOut">
+      <mat-form-field>
+        <i class="fa fa-user" style="font-size: 40px;"></i>
+        <mat-select placeholder="profileButton">
+          <mat-option [routerLink]="['profile']" >User profile </mat-option>
+          <!-- <mat-option> Settings </mat-option> -->
+          <mat-option [routerLink]="['maverick']">Log Out</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </nav>
+</section>
+<footer class="footer">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6 col-6">
+        Copyright © Maverick 2018
+      </div>
+    </div>
+  </div>
+</footer>

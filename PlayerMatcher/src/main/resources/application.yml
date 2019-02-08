@@ -1,0 +1,2 @@
+#kafka:
+#  bootstrap-servers: 172.23.239.185:9092

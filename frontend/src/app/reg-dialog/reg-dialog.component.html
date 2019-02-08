@@ -1,0 +1,116 @@
+<div class="container">
+  <mat-horizontal-stepper [linear]="  " #stepper="matHorizontalStepper">
+    <mat-step [stepControl]="firstFormGroup">
+      <div class="regForm">
+        <form [formGroup]="firstFormGroup">
+          <ng-template matStepLabel>Basic info</ng-template>
+          <table mat-table class="table form-group">
+            <tr>
+              <td title="User Name">
+                User Name</td>
+              <td>
+                <div class="form-group">
+                  <mat-form-field>
+                    <input matInput [(ngModel)]="user.userName"  (blur)="set(user.userName,user.email,user.password)" placeholder="How they call you" formControlName="firstCtrl" required>
+                  </mat-form-field>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td title="E-mail">
+                E-Mail</td>
+              <td>
+                <div class="form-group">
+                  <mat-form-field>
+                    <input class="form-control" matInput aria-invalid="true" (blur)="set()" (keyup)="checkEmail(user.email)" [(ngModel)]="user.email"
+                      placeholder="We won't full your inbox" formControlName="firstCtrl" required>
+                      
+                  </mat-form-field>
+                  <div class="message">{{msg1}}</div>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td title="Password">
+                Password</td>
+              <td>
+                <div class="form-group">
+                  <mat-form-field>
+                    <input type="password" class="form-control" (blur)="set(user.userName,user.email,user.password)" (keyup)="check(user.password)" matInput [(ngModel)]="user.password"
+                      placeholder="I promise to keep it secret" formControlName="firstCtrl" required>
+                    <div class="message">{{msg}}</div>
+                  </mat-form-field>
+                </div>
+              </td>
+            </tr>
+          </table>
+        </form>
+      </div>
+      <button mat-raised-button class="regButton" [disabled]="valid" matStepperNext>Next</button>
+    </mat-step>
+    <mat-step [stepControl]="secondFormGroup">
+      <div class="regForm">
+        <form [formGroup]="secondFormGroup">
+          <ng-template matStepLabel>Personal Info</ng-template>
+          <table mat-table>
+            <tr>
+              <td title="City">
+                City</td>
+              <td>
+                <mat-form-field>
+                  <input matInput [(ngModel)]="user.location" placeholder="Where can we meet" formControlName="secondCtrl" required>
+                </mat-form-field>
+              </td>
+            </tr>
+            <tr>
+              <td title="'Gender'">
+                Gender</td>
+              <td>
+                <mat-form-field>
+                  <mat-select [(value)]="user.gender">
+                    <mat-option value="Male">Male</mat-option>
+                    <mat-option value="Female">Female</mat-option>
+                  </mat-select>
+                </mat-form-field>
+                <!-- <input matInput [(ngModel)]="user.gender" placeholder="gender" formControlName="secondCtrl" required> -->
+                <!-- <mat-radio-group>
+                    <mat-radio-button [(ngModel)]="user.gender" value="Male">Male</mat-radio-button>
+                    <mat-radio-button [(ngModel)]="user.gender" value="Female">Female</mat-radio-button>
+                  </mat-radio-group>                   -->
+                <!-- <mat-form-field>
+                  <input type="radio" [(ng-model)]="user.gender" value="Male">Male
+                  <input type="radio" [(ng-model)]="user.gender" value="Female">Female
+
+                </mat-form-field> -->
+              </td>
+            </tr>
+            <tr>
+              <td title="'Age'">
+                Date Of Birth</td>
+              <td>
+                <mat-form-field>
+                  <input matInput class="form-control" [(ngModel)]="user.age" placeholder="Happy Birthday in advance" class="datepicker" formControlName="secondCtrl"
+                    [matDatepicker]="picker">
+                  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                  <mat-datepicker #picker startView="year" [startAt]="startDate"></mat-datepicker>
+                </mat-form-field>
+                <!-- <input matInput  [(ngModel)]="user.age" placeholder="age" formControlName="secondCtrl" required> -->
+              </td>
+            </tr>
+            <tr>
+              <td title="'Mobile'">
+                Mobile</td>
+              <td>
+                <mat-form-field>
+                  <input matInput min="7000000000" [(ngModel)]="user.mobile" placeholder="No calls without permission" formControlName="secondCtrl"
+                    required>
+                </mat-form-field>
+              </td>
+            </tr>
+          </table>
+        </form>
+      </div>
+      <button class="regButton" mat-raised-button (click)="openSnackBar()" (click)="regiseterUser(user)" mat-dialog-close>Register</button>
+    </mat-step>
+  </mat-horizontal-stepper>
+</div>

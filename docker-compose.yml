@@ -1,0 +1,282 @@
+version: '2.1'
+
+services:
+  
+  mysql:
+    container_name: mysql-container
+    image: mysql:5.7
+    restart: always
+    expose:
+      - 3306
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_USER: root
+      MYSQL_DATABASE: quizzApp
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_PASSWORD: root
+    volumes:
+      - /data/mysqldb:/var/lib/mysql
+
+  mongo:
+    image: mongo:latest
+    container_name: mongocontainer
+    network_mode: "host"
+    hostname: localhost
+    ports:  
+      - 27017:27017
+    volumes:
+      - /data/mongodb:/var/lib/mongodb
+    restart: always
+    command: mongod
+
+  neo4j:
+    image: neo4j:latest
+    container_name: neo4jcontainer
+    network_mode: "host"
+    hostname: localhost
+    ports:
+      - 7474:7474
+      - 6477:6477
+      - 7687:7687
+    environment:
+      - NEO4J_AUTH=none
+    volumes:
+      - /data/neo4j/data:/data
+    restart: always
+
+  grafana:
+    image: grafana/grafana
+    ports:
+      - 3000:3000
+    volumes:
+      - grafana_data:/var/lib/grafana
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=monitoring
+      - GF_SECURITY_ADMIN_USER=admin
+      - GF_USERS_ALLOW_SIGN_UP=false
+    depends_on:
+      - prometheus
+
+  prometheus:
+    image: prom/prometheus
+    ports:
+      - 8091:9090
+    volumes:
+      - ./grafana/prometheus.yml:/etc/prometheus/prometheus.yml
+      - prometheus_data:/prometheus
+    command:
+      - --config.file=/etc/prometheus/prometheus.yml
+
+  zookeeper:
+    image: wurstmeister/zookeeper 
+    network_mode: "host"
+    hostname: localhost
+    ports:
+      - "2181:2181"
+  
+  kafka:
+    build: ./kafka
+    ports:
+      - 8086:8086
+    network_mode: "host"
+    hostname: localhost
+    environment:
+      KAFKA_ADVERTISED_HOST_NAME: localhost
+      KAFKA_ADVERTISED_PORT: 8086
+      KAFKA_ZOOKEEPER_CONNECT: localhost:2181
+      KAFKA_LOG_FLUSH_INTERVAL_MESSAGES: 1  
+    depends_on:
+      - zookeeper
+    volumes:
+      - /data/kafka/run/docker.sock:/var/run/docker.sock 
+
+  eureka-service:
+    build: ./Quiz-app
+    network_mode: "host"
+    hostname: localhost
+    restart: always
+    container_name: eurekaContainer
+    ports:
+      - 8082:8082
+
+  central-configuration:
+    build: ./configuration-service
+    network_mode: "host"
+    hostname: localhost
+    restart: always
+    container_name: configuration-serviceContainer
+    ports:
+      - 8083:8083
+    depends_on:
+      - eureka-service
+
+
+  question-generator:
+    build: ./questionGenerator
+    network_mode: "host"
+    hostname: localhost
+    restart: always
+    container_name: question-generator-container
+    ports:
+      - 9090:9090
+    depends_on:
+      - eureka-service
+      - mongo
+      - kafka
+      - central-configuration
+
+  game:
+    build: ./game
+    network_mode: "host"
+    hostname: localhost
+    restart: always
+    container_name: sp-game-container
+    ports:
+      - 9092:9092
+    depends_on:
+      - eureka-service
+      - mongo
+      - kafka
+      - central-configuration
+  
+  game-manager:
+    build: ./GameManager
+    network_mode: "host"
+    hostname: localhost
+    restart: always
+    container_name: game-manager-container
+    ports:
+      - 9091:9091
+    depends_on:
+      - eureka-service
+      - mongo
+      - kafka
+      - central-configuration
+
+  recommendations:
+    build: ./recommendations
+    network_mode: "host"
+    hostname: localhost
+    restart: always
+    container_name: recommendations-container
+    ports:
+      - 9095:9095
+    depends_on:
+      - eureka-service
+      - neo4j
+      - kafka
+      - central-configuration
+
+  search:
+    build: ./SearchService
+    network_mode: "host"
+    hostname: localhost
+    restart: always
+    container_name: search-service-container
+    ports:
+      - 9096:9096
+    depends_on:
+      - eureka-service
+      - central-configuration
+
+  login:
+    build: ./login
+    network_mode: "host"
+    hostname: localhost
+    restart: always
+    container_name: login-container
+    ports:
+      - 9097:9097
+    depends_on:
+      - eureka-service
+      - central-configuration
+      - mysql
+      - kafka
+
+  multiplayer:
+    build: ./MultiplayerGameEngine
+    network_mode: "host"
+    hostname: localhost
+    restart: always
+    container_name: multiplayer-container
+    ports:
+      - 9093:9093
+    depends_on:
+      - eureka-service
+      - central-configuration
+      - mongo
+      - kafka    
+
+  adaptive:
+    build: ./AdaptiveGameEngine
+    network_mode: "host"
+    hostname: localhost
+    restart: always
+    container_name: adaptive-container
+    ports:
+      - 9094:9094
+    depends_on:
+      - eureka-service
+      - central-configuration
+      - neo4j
+      - kafka     
+
+  matching:
+    build: ./PlayerMatcher
+    network_mode: "host"
+    hostname: localhost
+    restart: always
+    container_name: matcher-container
+    ports:
+      - 9089:9089
+    depends_on:
+      - eureka-service
+      - central-configuration
+      - kafka
+ 
+  user-profile:
+    build: ./UserService-master
+    network_mode: "host"
+    hostname: localhost
+    restart: always
+    container_name: user-container
+    ports:
+      - 9098:9098
+    depends_on:
+      - eureka-service
+      - central-configuration
+      - mongo
+      - kafka
+
+  reporting:
+    build: ./GameReporting
+    network_mode: "host"
+    hostname: localhost
+    restart: always
+    container_name: reporting-container
+    ports:
+      - 9099:9099
+    depends_on:
+      - eureka-service
+      - central-configuration
+      - mongo
+      - kafka
+
+  front-end:
+    build: ./frontend
+    network_mode: "host"
+    hostname: localhost
+    restart: always
+    container_name: angular-container
+    ports:
+      - 80:4200
+    depends_on:
+      - eureka-service
+      - central-configuration
+      - mongo
+      - kafka
+
+volumes:
+  prometheus_data: {}
+  grafana_data: {}

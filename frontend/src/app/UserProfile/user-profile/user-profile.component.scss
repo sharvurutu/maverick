@@ -1,0 +1,163 @@
+.profile {
+  width: 100%;
+  position: relative;
+  background: #fff;
+  border: 1px solid #d5d5d5;
+  padding-bottom: 5px;
+  margin-bottom: 20px;
+}
+
+.profile .image {
+  display: block;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  text-align: center;
+  border: 5px solid #fff;
+}
+
+.profile .user {
+  position: relative;
+  padding: 0px 5px 5px;
+}
+
+.profile .user .avatar {
+  position: absolute;
+  left: 20px;
+  top: -85px;
+  z-index: 2;
+  box-shadow: 8px 10px 11px 0px #2bbca1 !important;
+}
+
+.profile .user h2 {
+  font-size: 16px;
+  line-height: 20px;
+  display: block;
+  float: left;
+  margin: 4px 0px 0px 135px;
+  font-weight: bold;
+}
+
+.profile .user .actions {
+  float: right;
+}
+
+.profile .user .actions .btn {
+  margin-bottom: 0px;
+}
+
+.profile .info {
+  float: left;
+  margin-left: 20px;
+}
+
+.img-profile {
+  height: 100px;
+  width: 100px;
+}
+
+.img-cover {
+  width: 100%;
+  height: 300px;
+}
+
+@media (max-width: 768px) {
+  .btn-responsive {
+    padding: 2px 4px;
+    font-size: 80%;
+    line-height: 1;
+    border-radius: 3px;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 992px) {
+  .btn-responsive {
+    padding: 4px 9px;
+    font-size: 90%;
+    line-height: 1.2;
+  }
+}
+
+.progressBar {
+  position: relative;
+  padding: 50% 50% 50% 0%;
+}
+
+.progressBar circle-progress {
+  cursor: pointer;
+}
+@media screen and (max-width: 395px) {
+  .progressBar {
+    padding: 71% 0% 0% 0% !important;
+    margin: 57% -58% 0%;
+  }
+}
+
+@media screen and (max-width: 310px) {
+  .progressBar {
+    padding: 71% 0% 0% 0% !important;
+    margin: 131% -62% 3%;
+  }
+}
+
+@media screen and (max-width: 290px) {
+  .progressBar {
+    padding: 105% 0% 0% 0% !important;
+    margin: 101% -62% 3%;
+  }
+}
+
+#percentComplete {
+  font-weight: bolder;
+  letter-spacing: 3px;
+  font-size: 20px;
+}
+
+.gameHeader {
+  font-weight: bolder;
+  letter-spacing: 3px;
+  text-align: center;
+  font-size: 18px;
+}
+.img-fluid {
+  min-height: 225px;
+  min-width: 225px;
+  width: auto !important;
+  height: auto !important ;
+  border-radius: 25px;
+}
+
+.list-group-item {
+  cursor: pointer;
+}
+ul {
+  border-radius: 2%;
+}
+li {
+  height: 50px !important;
+  letter-spacing: 5px;
+}
+li:hover {
+  zoom: 120%;
+  font-size: 110%;
+  font-weight: bolder;
+}
+#neutral {
+  color: grey;
+  font-weight: bolder;
+}
+#win {
+  color:greenyellow;
+  font-weight: bolder;
+
+}
+#draw {
+  color:blue;
+  font-weight: bolder;
+
+}
+#defeat {
+  color:red;
+  font-weight: bolder;
+
+}

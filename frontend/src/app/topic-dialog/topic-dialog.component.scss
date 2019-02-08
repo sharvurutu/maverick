@@ -1,0 +1,28 @@
+.example-container.ex {
+  display: flex;
+  flex-direction: column;
+}
+
+.example-container > * {
+  width: 100%;
+}
+
+h3 {
+  padding: 2%;
+}
+
+@media (min-width: 580px) and (max-width: 992px) {
+  h3 {
+    padding: 5%;
+  }
+}
+@media (min-width: 490px) and (max-width: 580px) {
+  h3 {
+    padding:8%;
+  }
+}
+input {
+  border-bottom: 0px solid rgb(224, 55, 55) !important;
+  box-shadow: 0 0px 0 0 #000 !important;
+  color: #000;
+}

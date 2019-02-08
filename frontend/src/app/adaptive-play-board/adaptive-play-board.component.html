@@ -1,0 +1,93 @@
+<br>
+<h5 style="text-align: center">Adaptive Quiz !</h5>
+<hr>
+<br>
+<br>
+<div id="main-content" class="container">
+ <div class="row">
+    <div class="col m12 c1" *ngIf="i1==0" >
+     
+ <!-- <form class="form-inline">
+       <div class="form-group"> -->
+         
+         
+         <div class="col m12" >
+             <div class="card">
+               <div class="card-content">
+                   
+                 
+                 <strong>Rules:</strong>
+                 <br>
+                 <p>
+                   The each question given is based on your previous answered questions.
+                   There is no time limit for any question as this quiz is intended to make you understand of your knowledge in a particular topic.
+                 </p>
+                 <br>
+                 <br>
+                 <strong>Description :</strong>
+                 <br>
+                 <p>
+                     The Adaptive Quiz provide you a way to enhance your knowledge through fun and increase your basic I.Q .
+                   </p>
+                   <br>
+                   <button id="send" class="btn btn-default" type="button" (click)="sendResponse()">Start Game</button>
+         <button id="send" class="btn btn-default" type="button" (click)="BackClicked()">back</button>
+               </div>
+             </div>
+           </div>
+       <!-- </div>
+     </form> -->
+     
+    </div>
+     <div *ngIf="i1==1">
+         <div class="col m12" >
+           <div class="card">
+             <div class="card-content">
+                 Question Level : {{questionLevel}}
+                 <br>
+               <label for="questionStamp" >{{questionId}}</label>
+               <strong>{{questionStamp}} </strong>
+             
+             </div>
+           </div>
+         </div>
+         <div class="col m12">
+           <div class="card">
+            <a (click)='sendAnswer(op1)'>
+              <div class="card-action">
+               <label >1) : {{op1}}</label>
+             </div>
+           </a>
+           </div>
+         </div>
+         <div class="col m12">
+           <div class="card">
+               <a (click)='sendAnswer(op2)'>
+                   <div class="card-action">
+                    <label >2) : {{op2}}</label>
+                  </div>
+                </a>
+           </div>
+         </div>
+         <div class="col m12">
+           <div class="card">
+               <a (click)='sendAnswer(op3)'>
+                   <div class="card-action">
+                    <label >3) : {{op3}}</label>
+                  </div>
+                </a>
+           </div>
+         </div>
+         <div class="col m12">
+           <div class="card">
+               <a (click)='sendAnswer(op4)'>
+                   <div class="card-action">
+                    <label >4) : {{op4}}</label>
+                  </div>
+                </a>
+           </div>
+         </div>
+     </div>
+     
+   </div>
+   </div>

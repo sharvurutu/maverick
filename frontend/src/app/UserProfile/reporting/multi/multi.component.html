@@ -1,0 +1,80 @@
+<div class="panel-group">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" href="#multicollapse">Recent Multi Games Played</a>
+      </h4>
+
+      <div id="multicollapse" class="panel-collapse collapse">
+        <div class="panel-body">
+
+          <div class="panel-group">
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <div *ngFor="let a of multireports,let i=index;">
+                  <!-- Trigger the modal with a button -->
+                  <a data-toggle="modal" href="#mymultiModal{{i}}">
+                    <b>GameName</b>
+                  </a>
+
+                  <!-- Modal -->
+                  <div id="mymultiModal{{i}}" class="modal fade" role="dialog">
+                    <div class="modal-dialog">
+
+                      <!-- Modal content-->
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <button type="button" class="close" data-dismiss="modal">&times;</button>
+                          <h4 class="modal-title">
+                            <b>Game Details</b>
+                          </h4>
+                        </div>
+                        <div class="modal-body" *ngFor="let b of multireports[i].reportQuestions,let j=index;">
+
+                          <ul class="collection">
+                            <a href="#!" class="collection-item">
+                              <span class="badge"></span>
+                              <b>
+                                <i class="material-icons">question_answer</i>
+                              </b>
+                            </a>
+                            <br/>
+
+
+                            <a href="#!" class="collection-item">
+                              <span class="badge"></span>
+                              <b>Question : {{multireports[i].reportQuestions[j].questionName}}</b>
+                            </a>
+                            <br/>
+
+                            <a href="#!" class="collection-item">
+                              <span class="badge"></span>
+                              <b>Correct Answer:{{multireports[i].reportQuestions[j].correctAnswer}}</b>
+                            </a>
+                            <br/>
+                            <a href="#!" class="collection-item">
+                              <span class="badge"></span>
+                              <b>Selected Answer:{{multireports[i].reportQuestions[j].selectedAnswered}}</b>
+                            </a>
+                            <br/>
+                          </ul>
+
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        </div>
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
